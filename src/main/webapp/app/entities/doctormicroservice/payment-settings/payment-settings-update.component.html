@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-payment-settings-heading" jhiTranslate="doctormicroserviceApp.doctormicroservicePaymentSettings.home.createOrEditLabel">Create or edit a Payment Settings</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!paymentSettings.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="paymentSettings.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="doctormicroserviceApp.doctormicroservicePaymentSettings.isPaymentEnabled" for="field_isPaymentEnabled">Is Payment Enabled</label>
+                    <input type="checkbox" class="form-control" name="isPaymentEnabled" id="field_isPaymentEnabled"
+                        [(ngModel)]="paymentSettings.isPaymentEnabled" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="doctormicroserviceApp.doctormicroservicePaymentSettings.amount" for="field_amount">Amount</label>
+                    <input type="number" class="form-control" name="amount" id="field_amount"
+                        [(ngModel)]="paymentSettings.amount" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="doctormicroserviceApp.doctormicroservicePaymentSettings.paymentMethod" for="field_paymentMethod">Payment Method</label>
+                    <input type="text" class="form-control" name="paymentMethod" id="field_paymentMethod"
+                        [(ngModel)]="paymentSettings.paymentMethod" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="doctormicroserviceApp.doctormicroservicePaymentSettings.currency" for="field_currency">Currency</label>
+                    <input type="text" class="form-control" name="currency" id="field_currency"
+                        [(ngModel)]="paymentSettings.currency" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="doctormicroserviceApp.doctormicroservicePaymentSettings.intent" for="field_intent">Intent</label>
+                    <input type="text" class="form-control" name="intent" id="field_intent"
+                        [(ngModel)]="paymentSettings.intent" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="doctormicroserviceApp.doctormicroservicePaymentSettings.noteToPayer" for="field_noteToPayer">Note To Payer</label>
+                    <input type="text" class="form-control" name="noteToPayer" id="field_noteToPayer"
+                        [(ngModel)]="paymentSettings.noteToPayer" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="doctormicroserviceApp.doctormicroservicePaymentSettings.paymentGatewayProvider" for="field_paymentGatewayProvider">Payment Gateway Provider</label>
+                    <input type="text" class="form-control" name="paymentGatewayProvider" id="field_paymentGatewayProvider"
+                        [(ngModel)]="paymentSettings.paymentGatewayProvider" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="doctormicroserviceApp.doctormicroservicePaymentSettings.paymentGatewayCredentials" for="field_paymentGatewayCredentials">Payment Gateway Credentials</label>
+                    <input type="text" class="form-control" name="paymentGatewayCredentials" id="field_paymentGatewayCredentials"
+                        [(ngModel)]="paymentSettings.paymentGatewayCredentials" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="reservedSlot">
+            <h2><span jhiTranslate="doctormicroserviceApp.doctormicroserviceReservedSlot.detail.title">Reserved Slot</span> {{reservedSlot.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroserviceReservedSlot.date">Date</span></dt>
+                <dd>
+                    <span>{{reservedSlot.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroserviceReservedSlot.startTime">Start Time</span></dt>
+                <dd>
+                    <span>{{reservedSlot.startTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroserviceReservedSlot.endTime">End Time</span></dt>
+                <dd>
+                    <span>{{reservedSlot.endTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroserviceReservedSlot.doctor">Doctor</span></dt>
+                <dd>
+                    <div *ngIf="reservedSlot.doctorId">
+                        <a [routerLink]="['/doctor', reservedSlot.doctorId, 'view']">{{reservedSlot.doctorId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroserviceReservedSlot.slotStatus">Slot Status</span></dt>
+                <dd>
+                    <div *ngIf="reservedSlot.slotStatusId">
+                        <a [routerLink]="['/slot-status', reservedSlot.slotStatusId, 'view']">{{reservedSlot.slotStatusId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/reserved-slot', reservedSlot.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

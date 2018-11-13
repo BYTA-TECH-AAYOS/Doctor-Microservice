@@ -1,0 +1,29 @@
+{
+  "doctormicroserviceApp": {
+    "doctormicroservicePaymentSettings": {
+      "home": {
+        "title": "Payment Settings",
+        "createLabel": "Create a new Payment Settings",
+        "createOrEditLabel": "Create or edit a Payment Settings",
+        "search": "Search for Payment Settings"
+      },
+      "created": "A new Payment Settings is created with identifier {{ param }}",
+      "updated": "A Payment Settings is updated with identifier {{ param }}",
+      "deleted": "A Payment Settings is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Payment Settings {{ id }}?"
+      },
+      "detail": {
+        "title": "Payment Settings"
+      },
+      "isPaymentEnabled": "Is Payment Enabled",
+      "amount": "Amount",
+      "paymentMethod": "Payment Method",
+      "currency": "Currency",
+      "intent": "Intent",
+      "noteToPayer": "Note To Payer",
+      "paymentGatewayProvider": "Payment Gateway Provider",
+      "paymentGatewayCredentials": "Payment Gateway Credentials"
+    }
+  }
+}

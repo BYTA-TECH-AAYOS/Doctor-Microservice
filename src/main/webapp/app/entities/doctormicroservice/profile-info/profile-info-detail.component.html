@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="profileInfo">
+            <h2><span jhiTranslate="doctormicroserviceApp.doctormicroserviceProfileInfo.detail.title">Profile Info</span> {{profileInfo.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroserviceProfileInfo.profileName">Profile Name</span></dt>
+                <dd>
+                    <span>{{profileInfo.profileName}}</span>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroserviceProfileInfo.phoneNumber">Phone Number</span></dt>
+                <dd>
+                    <span>{{profileInfo.phoneNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroserviceProfileInfo.firstName">First Name</span></dt>
+                <dd>
+                    <span>{{profileInfo.firstName}}</span>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroserviceProfileInfo.lastName">Last Name</span></dt>
+                <dd>
+                    <span>{{profileInfo.lastName}}</span>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroserviceProfileInfo.email">Email</span></dt>
+                <dd>
+                    <span>{{profileInfo.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroserviceProfileInfo.image">Image</span></dt>
+                <dd>
+                    <div *ngIf="profileInfo.image">
+                        <a (click)="openFile(profileInfo.imageContentType, profileInfo.image)">
+                            <img [src]="'data:' + profileInfo.imageContentType + ';base64,' + profileInfo.image" style="max-width: 100%;" alt="profileInfo image"/>
+                        </a>
+                        {{profileInfo.imageContentType}}, {{byteSize(profileInfo.image)}}
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/profile-info', profileInfo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

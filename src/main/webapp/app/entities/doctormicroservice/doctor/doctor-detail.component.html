@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="doctor">
+            <h2><span jhiTranslate="doctormicroserviceApp.doctormicroserviceDoctor.detail.title">Doctor</span> {{doctor.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroserviceDoctor.specialisation">Specialisation</span></dt>
+                <dd>
+                    <span>{{doctor.specialisation}}</span>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroserviceDoctor.location">Location</span></dt>
+                <dd>
+                    <span>{{doctor.location}}</span>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroserviceDoctor.profileInfo">Profile Info</span></dt>
+                <dd>
+                    <div *ngIf="doctor.profileInfoId">
+                        <a [routerLink]="['/profile-info', doctor.profileInfoId, 'view']">{{doctor.profileInfoId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroserviceDoctor.contactInfo">Contact Info</span></dt>
+                <dd>
+                    <div *ngIf="doctor.contactInfoId">
+                        <a [routerLink]="['/contact-info', doctor.contactInfoId, 'view']">{{doctor.contactInfoId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroserviceDoctor.doctorSettings">Doctor Settings</span></dt>
+                <dd>
+                    <div *ngIf="doctor.doctorSettingsId">
+                        <a [routerLink]="['/doctor-settings', doctor.doctorSettingsId, 'view']">{{doctor.doctorSettingsId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroserviceDoctor.workspace">Workspace</span></dt>
+                <dd>
+                    <div *ngIf="doctor.workspaceId">
+                        <a [routerLink]="['/workspace', doctor.workspaceId, 'view']">{{doctor.workspaceId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/doctor', doctor.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

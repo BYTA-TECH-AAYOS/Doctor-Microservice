@@ -1,0 +1,25 @@
+{
+  "doctormicroserviceApp": {
+    "doctormicroserviceDoctorSettings": {
+      "home": {
+        "title": "Doctor Settings",
+        "createLabel": "Create a new Doctor Settings",
+        "createOrEditLabel": "Create or edit a Doctor Settings",
+        "search": "Search for Doctor Settings"
+      },
+      "created": "A new Doctor Settings is created with identifier {{ param }}",
+      "updated": "A Doctor Settings is updated with identifier {{ param }}",
+      "deleted": "A Doctor Settings is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Doctor Settings {{ id }}?"
+      },
+      "detail": {
+        "title": "Doctor Settings"
+      },
+      "approvalType": "Approval Type",
+      "isMailNotificationsEnabled": "Is Mail Notifications Enabled",
+      "isSMSNotificationsEnabled": "Is SMS Notifications Enabled",
+      "paymentSettings": "Payment Settings"
+    }
+  }
+}

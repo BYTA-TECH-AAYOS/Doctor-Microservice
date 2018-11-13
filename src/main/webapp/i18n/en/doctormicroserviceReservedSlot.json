@@ -1,0 +1,26 @@
+{
+  "doctormicroserviceApp": {
+    "doctormicroserviceReservedSlot": {
+      "home": {
+        "title": "Reserved Slots",
+        "createLabel": "Create a new Reserved Slot",
+        "createOrEditLabel": "Create or edit a Reserved Slot",
+        "search": "Search for Reserved Slot"
+      },
+      "created": "A new Reserved Slot is created with identifier {{ param }}",
+      "updated": "A Reserved Slot is updated with identifier {{ param }}",
+      "deleted": "A Reserved Slot is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Reserved Slot {{ id }}?"
+      },
+      "detail": {
+        "title": "Reserved Slot"
+      },
+      "date": "Date",
+      "startTime": "Start Time",
+      "endTime": "End Time",
+      "doctor": "Doctor",
+      "slotStatus": "Slot Status"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "doctormicroserviceApp": {
+    "doctormicroserviceSlotStatus": {
+      "home": {
+        "title": "Slot Statuses",
+        "createLabel": "Create a new Slot Status",
+        "createOrEditLabel": "Create or edit a Slot Status",
+        "search": "Search for Slot Status"
+      },
+      "created": "A new Slot Status is created with identifier {{ param }}",
+      "updated": "A Slot Status is updated with identifier {{ param }}",
+      "deleted": "A Slot Status is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Slot Status {{ id }}?"
+      },
+      "detail": {
+        "title": "Slot Status"
+      },
+      "status": "Status"
+    }
+  }
+}

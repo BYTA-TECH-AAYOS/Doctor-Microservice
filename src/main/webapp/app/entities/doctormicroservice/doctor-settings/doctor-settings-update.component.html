@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-doctor-settings-heading" jhiTranslate="doctormicroserviceApp.doctormicroserviceDoctorSettings.home.createOrEditLabel">Create or edit a Doctor Settings</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!doctorSettings.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="doctorSettings.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="doctormicroserviceApp.doctormicroserviceDoctorSettings.approvalType" for="field_approvalType">Approval Type</label>
+                    <input type="text" class="form-control" name="approvalType" id="field_approvalType"
+                        [(ngModel)]="doctorSettings.approvalType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="doctormicroserviceApp.doctormicroserviceDoctorSettings.isMailNotificationsEnabled" for="field_isMailNotificationsEnabled">Is Mail Notifications Enabled</label>
+                    <input type="checkbox" class="form-control" name="isMailNotificationsEnabled" id="field_isMailNotificationsEnabled"
+                        [(ngModel)]="doctorSettings.isMailNotificationsEnabled" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="doctormicroserviceApp.doctormicroserviceDoctorSettings.isSMSNotificationsEnabled" for="field_isSMSNotificationsEnabled">Is SMS Notifications Enabled</label>
+                    <input type="checkbox" class="form-control" name="isSMSNotificationsEnabled" id="field_isSMSNotificationsEnabled"
+                        [(ngModel)]="doctorSettings.isSMSNotificationsEnabled" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="doctormicroserviceApp.doctormicroserviceDoctorSettings.paymentSettings" for="field_paymentSettings">Payment Settings</label>
+                    <select class="form-control" id="field_paymentSettings" name="paymentSettings" [(ngModel)]="doctorSettings.paymentSettingsId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="paymentSettingsOption.id" *ngFor="let paymentSettingsOption of paymentsettings; trackBy: trackPaymentSettingsById">{{paymentSettingsOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

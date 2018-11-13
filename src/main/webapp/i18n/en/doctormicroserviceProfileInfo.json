@@ -1,0 +1,27 @@
+{
+  "doctormicroserviceApp": {
+    "doctormicroserviceProfileInfo": {
+      "home": {
+        "title": "Profile Infos",
+        "createLabel": "Create a new Profile Info",
+        "createOrEditLabel": "Create or edit a Profile Info",
+        "search": "Search for Profile Info"
+      },
+      "created": "A new Profile Info is created with identifier {{ param }}",
+      "updated": "A Profile Info is updated with identifier {{ param }}",
+      "deleted": "A Profile Info is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Profile Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Profile Info"
+      },
+      "profileName": "Profile Name",
+      "phoneNumber": "Phone Number",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "image": "Image"
+    }
+  }
+}

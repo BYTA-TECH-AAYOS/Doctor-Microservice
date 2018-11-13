@@ -1,0 +1,26 @@
+{
+  "doctormicroserviceApp": {
+    "doctormicroserviceDoctorSessionInfo": {
+      "home": {
+        "title": "Doctor Session Infos",
+        "createLabel": "Create a new Doctor Session Info",
+        "createOrEditLabel": "Create or edit a Doctor Session Info",
+        "search": "Search for Doctor Session Info"
+      },
+      "created": "A new Doctor Session Info is created with identifier {{ param }}",
+      "updated": "A Doctor Session Info is updated with identifier {{ param }}",
+      "deleted": "A Doctor Session Info is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Doctor Session Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Doctor Session Info"
+      },
+      "date": "Date",
+      "startTime": "Start Time",
+      "endTime": "End Time",
+      "interval": "Interval",
+      "doctor": "Doctor"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="paymentSettings">
+            <h2><span jhiTranslate="doctormicroserviceApp.doctormicroservicePaymentSettings.detail.title">Payment Settings</span> {{paymentSettings.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroservicePaymentSettings.isPaymentEnabled">Is Payment Enabled</span></dt>
+                <dd>
+                    <span>{{paymentSettings.isPaymentEnabled}}</span>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroservicePaymentSettings.amount">Amount</span></dt>
+                <dd>
+                    <span>{{paymentSettings.amount}}</span>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroservicePaymentSettings.paymentMethod">Payment Method</span></dt>
+                <dd>
+                    <span>{{paymentSettings.paymentMethod}}</span>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroservicePaymentSettings.currency">Currency</span></dt>
+                <dd>
+                    <span>{{paymentSettings.currency}}</span>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroservicePaymentSettings.intent">Intent</span></dt>
+                <dd>
+                    <span>{{paymentSettings.intent}}</span>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroservicePaymentSettings.noteToPayer">Note To Payer</span></dt>
+                <dd>
+                    <span>{{paymentSettings.noteToPayer}}</span>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroservicePaymentSettings.paymentGatewayProvider">Payment Gateway Provider</span></dt>
+                <dd>
+                    <span>{{paymentSettings.paymentGatewayProvider}}</span>
+                </dd>
+                <dt><span jhiTranslate="doctormicroserviceApp.doctormicroservicePaymentSettings.paymentGatewayCredentials">Payment Gateway Credentials</span></dt>
+                <dd>
+                    <span>{{paymentSettings.paymentGatewayCredentials}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/payment-settings', paymentSettings.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
