@@ -1,0 +1,37 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.bytatech.ayoos.doctor",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "5.6.1",
+    "applicationType": "microservice",
+    "baseName": "doctormicroservice",
+    "packageName": "com.bytatech.ayoos.doctor",
+    "packageFolder": "com/bytatech/ayoos/doctor",
+    "serverPort": "8081",
+    "authenticationType": "oauth2",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": "kafka",
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZjUzOWIyYWVmN2M3YWQ5NWEwN2ZlNGIzZWY0M2ZlYjUzMmZhMDlkMmRiODQ2N2IyZmVmMjg2YjI2ZDM3YjNjYTk2ZTk0MjA3ZmNiNTZkZGUwMDk4MmY0NTRmODJlNzcwNThiNmUzOGQzMjllZjgzYjBmMmFkNWQ1YTM3MWQ1NzE=",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "enableTranslation": true,
+    "clientPackageManager": "npm",
+    "nativeLanguage": "en",
+    "languages": [
+      "en"
+    ],
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}

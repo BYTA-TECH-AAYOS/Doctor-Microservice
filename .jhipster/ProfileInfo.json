@@ -1,0 +1,41 @@
+{
+    "name": "ProfileInfo",
+    "fields": [
+        {
+            "fieldName": "profileName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phoneNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "firstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20181108041025",
+    "entityTableName": "profile_info",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "doctormicroservice",
+    "applications": "*",
+    "microserviceName": "doctormicroservice"
+}
