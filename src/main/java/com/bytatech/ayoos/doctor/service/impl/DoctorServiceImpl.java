@@ -1,23 +1,14 @@
 package com.bytatech.ayoos.doctor.service.impl;
 
-import com.bytatech.ayoos.doctor.service.DoctorService;
-import com.bytatech.ayoos.doctor.service.ReservedSlotService;
-import com.bytatech.ayoos.doctor.service.UserService;
-import com.bytatech.ayoos.doctor.domain.Doctor;
-import com.bytatech.ayoos.doctor.domain.DoctorSessionInfo;
-import com.bytatech.ayoos.doctor.domain.ProfileInfo;
-import com.bytatech.ayoos.doctor.domain.ReservedSlot;
-import com.bytatech.ayoos.doctor.domain.SlotStatus;
-import com.bytatech.ayoos.doctor.repository.DoctorRepository;
-import com.bytatech.ayoos.doctor.repository.ProfileInfoRepository;
-import com.bytatech.ayoos.doctor.repository.ReservedSlotRepository;
-import com.bytatech.ayoos.doctor.repository.SlotStatusRepository;
-import com.bytatech.ayoos.doctor.repository.search.DoctorSearchRepository;
-import com.bytatech.ayoos.doctor.repository.search.ReservedSlotSearchRepository;
-import com.bytatech.ayoos.doctor.security.SecurityUtils;
-import com.bytatech.ayoos.doctor.service.dto.DoctorDTO;
-import com.bytatech.ayoos.doctor.service.dto.ReservedSlotDTO;
-import com.bytatech.ayoos.doctor.service.mapper.DoctorMapper;
+import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
+
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.TreeSet;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +19,23 @@ import org.springframework.data.geo.Point;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
-import java.time.ZonedDateTime;
-import java.util.Optional;
-import java.util.Set;
-import java.util.TreeSet;
-
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import com.bytatech.ayoos.doctor.domain.Doctor;
+import com.bytatech.ayoos.doctor.domain.DoctorSessionInfo;
+import com.bytatech.ayoos.doctor.domain.ProfileInfo;
+import com.bytatech.ayoos.doctor.domain.ReservedSlot;
+import com.bytatech.ayoos.doctor.domain.SlotStatus;
+import com.bytatech.ayoos.doctor.repository.DoctorRepository;
+import com.bytatech.ayoos.doctor.repository.ProfileInfoRepository;
+import com.bytatech.ayoos.doctor.repository.ReservedSlotRepository;
+import com.bytatech.ayoos.doctor.repository.SlotStatusRepository;
+import com.bytatech.ayoos.doctor.repository.search.DoctorSearchRepository;
+import com.bytatech.ayoos.doctor.repository.search.ProfileInfoSearchRepository;
+import com.bytatech.ayoos.doctor.repository.search.ReservedSlotSearchRepository;
+import com.bytatech.ayoos.doctor.service.DoctorService;
+import com.bytatech.ayoos.doctor.service.ReservedSlotService;
+import com.bytatech.ayoos.doctor.service.UserService;
+import com.bytatech.ayoos.doctor.service.dto.DoctorDTO;
+import com.bytatech.ayoos.doctor.service.mapper.DoctorMapper;
 
 /**
  * Service Implementation for managing Doctor.
@@ -62,8 +63,12 @@ public class DoctorServiceImpl implements DoctorService {
 
 	@Autowired
 	ProfileInfoRepository profileInfoRepository;
+	
 	@Autowired
 	SlotStatusRepository slotStatusRepository;
+	
+	@Autowired
+	ProfileInfoSearchRepository profileInfoSearchRepository;
 
 	private final DoctorSearchRepository doctorSearchRepository;
 
@@ -83,20 +88,54 @@ public class DoctorServiceImpl implements DoctorService {
 	 */
 	@Override
 	public DoctorDTO save(DoctorDTO doctorDTO) {
-		ProfileInfo profile = new ProfileInfo();
-		log.debug("Request to save Doctor : {}", doctorDTO);
-		profile.setProfileName(userService.getCurrentUserLogin());
-		ProfileInfo doctorProfileInfo = profileInfoRepository.save(profile);
 
-		Doctor doctor = doctorMapper.toEntity(doctorDTO);
-		doctor.setProfileInfo(doctorProfileInfo);
-		doctor = doctorRepository.save(doctor);
-		DoctorDTO result = doctorMapper.toDto(doctor);
-		doctorSearchRepository.save(doctor);
+		boolean newDoctor = true;
+		ProfileInfo doctorProfileInfo;
+		Doctor doctor;
+		DoctorDTO result=null;
+		
+		
+		List<ProfileInfo> profileInfos = profileInfoRepository.findAll();
+		
+		for (ProfileInfo profileInfo : profileInfos) {
+			
+			if(profileInfo.getProfileName()!=null){
+			
+				
+				if (profileInfo.getProfileName().equals(userService.getCurrentUserLogin())) {
+					
+					newDoctor = false;
+				}
+			}
+		}
 
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>profileName<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-				+ userService.getCurrentUserLogin());
-		;
+		if (newDoctor) { 
+
+			ProfileInfo profile = new ProfileInfo();
+			profile.setProfileName(userService.getCurrentUserLogin());
+			doctorProfileInfo = profileInfoRepository.save(profile);
+			profileInfoSearchRepository.save(profile);
+
+			doctor = doctorMapper.toEntity(doctorDTO);
+			doctor.setProfileInfo(doctorProfileInfo);
+			Doctor newdoctor = doctorRepository.save(doctor);
+			doctor = doctorRepository.save(newdoctor);
+			result = doctorMapper.toDto(doctor);
+			doctorSearchRepository.save(doctor);
+		}
+
+		if(!newDoctor)
+		{
+			doctor = doctorMapper.toEntity(doctorDTO);
+			log.debug("Request to save Doctor : {}", doctorDTO);
+			doctor = doctorRepository.save(doctor);
+	
+			result = doctorMapper.toDto(doctor);
+			doctorSearchRepository.save(doctor);
+		}
+		
+		log.info("returned doctorDTO", doctorDTO);
+		
 		return result;
 	}
 
