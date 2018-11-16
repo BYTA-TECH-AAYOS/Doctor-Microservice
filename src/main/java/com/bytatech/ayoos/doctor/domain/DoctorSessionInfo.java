@@ -169,18 +169,24 @@ public class DoctorSessionInfo implements Serializable,Comparable<DoctorSessionI
 */
 package com.bytatech.ayoos.doctor.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
-import javax.persistence.*;
-
-import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.elasticsearch.annotations.Document;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * A DoctorSessionInfo.
@@ -188,7 +194,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "doctor_session_info")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "doctorsessioninfov2")
+@Document(indexName = "doctorsessioninfov11")
 public class DoctorSessionInfo implements Serializable,Comparable<DoctorSessionInfo> {
 
 	private static final long serialVersionUID = 1L;
