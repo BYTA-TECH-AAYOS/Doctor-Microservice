@@ -3,11 +3,13 @@ package com.bytatech.ayoos.doctor.client;
 import java.io.IOException;
 
 import org.springframework.context.annotation.Bean;
-
-import feign.RequestInterceptor;
+import org.springframework.context.annotation.Configuration;
 
 import com.bytatech.ayoos.doctor.security.oauth2.AuthorizationHeaderUtil;
 
+import feign.RequestInterceptor;
+
+@Configuration
 public class OAuth2InterceptedFeignConfiguration {
 
     @Bean(name = "oauth2RequestInterceptor")

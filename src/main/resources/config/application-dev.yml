@@ -24,7 +24,7 @@ eureka:
         prefer-ip-address: true
     client:
         service-url:
-            defaultZone: http://104.196.121.188:8761/eureka/
+            defaultZone: https://admin:${jhipster.registry.password}@registry-server.herokuapp.com/eureka/
         enabled : false
 
 spring:
@@ -78,15 +78,18 @@ spring:
             hibernate.cache.hazelcast.use_lite_member: true
     data:
         elasticsearch:
-           cluster-name: ayoos
-           cluster-nodes: 104.196.49.233:9300
-           properties:
-               path:
-                   logs: target/elasticsearch/log
-                   data: target/elasticsearch/data
+            cluster-name: elasticsearch
+            cluster-nodes: 35.243.202.146:9300
+            properties:
+                path:
+                    logs: target/elasticsearch/log
+                    data: target/elasticsearch/data
+                transport:
+                    tcp:
+                        connect_timeout: 120s
         jest:
-           readTimeout: 10000
-           uri: http://104.196.49.233:9400
+            readTimeout: 10000
+            uri: http://35.243.202.146:9200
     liquibase:
         contexts: dev
     mail:
